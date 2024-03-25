@@ -4,6 +4,9 @@
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.7.0" }
     },
+    "github": {
+        "enabled": false
+    },
     "routes": [{
         "src": "/(.*)",
         "dest": "/api/index.php"
