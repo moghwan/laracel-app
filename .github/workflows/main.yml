@@ -22,8 +22,12 @@ jobs:
       - name: Run Artisan commands
         run: |
           php artisan optimize
+          php artisan migrate --force
+          php artisan db:seed
         env:
           APP_ENV: production
+          DB_CONNECTION: pgsql
+          DB_URL: ${{ secrets.DB_URL }}
 
       - name: Deploy to Vercel
         run: vercel deploy --force --prod --token=${{ secrets.VERCEL_LARACEL_TOKEN }}
