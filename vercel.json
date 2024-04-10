@@ -30,8 +30,6 @@
         "LOG_DEPRECATIONS_CHANNEL": "null",
         "LOG_LEVEL": "debug",
 
-        "DB_CONNECTION": "pgsql",
-
         "BROADCAST_DRIVER": "log",
         "FILESYSTEM_DISK": "local",
         "QUEUE_CONNECTION": "sync",
