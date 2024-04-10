@@ -26,8 +26,9 @@ jobs:
           php artisan db:seed --force
         env:
           APP_ENV: production
-          DB_CONNECTION: pgsql
-          DB_URL: ${{ secrets.DB_URL }}
+          DB_CONNECTION: sqlite
+#          DB_CONNECTION: pgsql
+#          DB_URL: ${{ secrets.DB_URL }}
 
       - name: Deploy to Vercel
         run: vercel deploy --force --prod --token=${{ secrets.VERCEL_LARACEL_TOKEN }}
