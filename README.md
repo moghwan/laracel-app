@@ -10,6 +10,20 @@ The goal of this project is to provide a quick starting point as an alternative 
 ### Setup
 - create a new GitHub project using [this template repo](https://github.com/new?template_name=laracel-app&template_owner=moghwan)
 
+### local development / digitalocean setup
+- install dependencies:
+  - `composer install`
+- copy `.env.example` to `.env` and update your database credentials
+  - `cp .env.example .env`
+- clone your repo and create a laravel app key:
+  - `php artisan key:generate`
+- set permissions:
+  - `chmod -R 777 storage bootstrap/cache`
+- database permissions:
+  - `chmod 777 database/database.sqlite`
+- install sqlite module:
+  - `sudo apt-get install php8.x-sqlite3`
+
 ### Getting your secrets
 - clone your repo and create a laravel app key:
   - `php artisan key:generate`
