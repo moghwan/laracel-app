@@ -16,10 +16,8 @@ class BenchmarkController extends Controller
             'User::all()' => fn () => User::all(),
         ], iterations: $iterations);
 
-        $count = User::count();
-
         return response()->json([
-            'users count' => $count,
+            'users count' => User::count(),
             'iterations' => $iterations,
             'benchmark' => $res,
         ]);
