@@ -11,11 +11,13 @@ class BenchmarkController extends Controller
 {
     public function users(int $iterations = 1): JsonResponse
     {
+        $users = User::all();
+
         $res = Benchmark::measure([
             'User::count()' => fn () => User::count(),
             'User::all()->count()' => fn () => User::all()->count(),
             'User::all()' => fn () => User::all(),
-            'reformat(User::all())' => fn () => $this->reformat(User::all()),
+            'reformat(User::all())' => fn () => $this->reformat($users),
         ], iterations: $iterations);
 
         return response()->json([
