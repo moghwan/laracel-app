@@ -2,7 +2,7 @@
 This project will help you get started with a new Laravel project hosted on Vercel. It includes a basic setup for a Laravel project with a Vercel deployment pipeline. The project is setup to use:
 - PHP 8.3
 - Laravel 11
-- Supabase as a database engine
+- Serverless SQLite or Supabase as a database engine
 - GitHub actions for deployment
 
 The goal of this project is to provide a quick starting point as an alternative to (my case) DigitalOcean to run little projects with no cost.
@@ -21,8 +21,13 @@ The goal of this project is to provide a quick starting point as an alternative 
     - change node js version to 18
   - https://vercel.com/account > Vercel ID (organization id)
   - https://vercel.com/account/tokens > create a new token (name it `VERCEL_LARACEL_TOKEN` for example)
-- Supabase: create a new project, password will be needed
-  - go to connect > copy uri 
+- database
+  - Supabase:
+    - create a new project, password will be needed
+    - go to connect > copy uri 
+  - sqlite:
+    - a dummy db is already provided in the repo
+    - to use it, comment line 29 and uncomment line 30-31 in `.github/workflows/main.yml`
     
 ### Setting your secrets
 - Vercel: settings > environment variables
@@ -33,6 +38,7 @@ The goal of this project is to provide a quick starting point as an alternative 
   - `VERCEL_LARACEL_TOKEN`: copied token
   - `VERCEL_ORG_ID`: copied organization id
   - `VERCEL_PROJECT_ID`: copied project id
+  - `SENTRY_LARAVEL_DSN`: your sentry dsn (optional)
 - GitHub: actions > redeploy last action
 
 ### Keep in mind
@@ -46,4 +52,3 @@ The goal of this project is to provide a quick starting point as an alternative 
   - `vercel.json` - a Vercel configuration file to define the serverless function and the php runtime.
   - `database/seeders/DatabaseSeeder.php` - using User factory to seed users table with data.
   - API endpoints are prefixed with `/backend` instead of `/api`.
-- I avoided using sqlite for the database because it's not supported for writing by Vercel's serverless functions.
