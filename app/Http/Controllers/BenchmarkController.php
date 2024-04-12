@@ -21,14 +21,15 @@ class BenchmarkController extends Controller
         ], iterations: $iterations);
 
         $res = collect($res)->map(fn ($time) => round($time, 2));
+        $sum = collect($res)->sum();
 
         return response()->json([
             'users count' => User::count(),
             'benchmark (ms)' => $res,
-            'benchmark total (ms)' => round(collect($res)->sum(), 2),
+            'benchmark total (ms)' => round($sum, 2),
             'iterations' => $iterations,
-            'ops duration * iterations (ms)' => collect($res)->sum() * $iterations,
-            'ops duration * iterations (s)' => collect($res)->sum() * $iterations / 1000,
+            'ops duration * iterations (ms)' => $sum * $iterations,
+            'ops duration * iterations (s)' => $sum * $iterations / 1000,
         ]);
     }
 
