@@ -20,10 +20,15 @@ class BenchmarkController extends Controller
             'reformat(User::all())' => fn () => $this->reformat($users),
         ], iterations: $iterations);
 
+        $res = collect($res)->map(fn ($time) => round($time, 2));
+
         return response()->json([
             'users count' => User::count(),
+            'benchmark (ms)' => $res,
+            'benchmark total (ms)' => round(collect($res)->sum(), 2),
             'iterations' => $iterations,
-            'benchmark' => $res,
+            'ops duration * iterations (ms)' => collect($res)->sum() * $iterations,
+            'ops duration * iterations (s)' => collect($res)->sum() * $iterations / 1000,
         ]);
     }
 
