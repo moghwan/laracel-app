@@ -1,3 +1,7 @@
+### not maintained anymore
+for the [simpliest reason](https://x.com/rauchg/status/1918517763644985605) 🇵🇸
+***
+
 ### A Laravel / Vercel boilerplate template with php 8.2
 This project will help you get started with a new Laravel project hosted on Vercel. It includes a basic setup for a Laravel project with a Vercel deployment pipeline.
 
